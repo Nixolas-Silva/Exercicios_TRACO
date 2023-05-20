@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 29</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Validação de CNPJ</h1>
+
+      <label class="titulo" for="cnpj">Digite o CNPJ:</label>
+      <input class="item" type="text" id="cnpj">
+
+      <p class="container"><button class="button" onclick="validarCNPJ()">Validar</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      <p class="titulo"  id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    //Econtrei um vídeo explicando como fazer esse validador de cnpj
+    function validarCNPJ() {
+        var cnpj = document.getElementById("cnpj").value;
+
+        // Remover caracteres não numéricos do CNPJ
+        var cnpjNumerico = cnpj.replace(/\D/g, '');
+
+        // Verificar se o CNPJ possui 14 dígitos
+        if (cnpjNumerico.length !== 14) {
+            document.getElementById("resultado").textContent = "Inválido.";
+            return;
+        }
+
+        // Calcular o primeiro dígito verificador
+        var soma = 0;
+        var pesos = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+        for (var i = 0; i < 12; i++) {
+            soma += parseInt(cnpjNumerico.charAt(i)) * pesos[i];
+        }
+        var primeiroDigito = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+        // Verificar o primeiro dígito verificador
+        if (parseInt(cnpjNumerico.charAt(12)) !== primeiroDigito) {
+            document.getElementById("resultado").textContent = "Inválido.";
+            return;
+        }
+
+        // Calcular o segundo dígito verificador
+        soma = 0;
+        pesos.unshift(6);
+        for (var j = 0; j < 13; j++) {
+            soma += parseInt(cnpjNumerico.charAt(j)) * pesos[j];
+        }
+        var segundoDigito = soma % 11 < 2 ? 0 : 11 - soma % 11;
+
+        // Verificar o segundo dígito verificador
+        if (parseInt(cnpjNumerico.charAt(13)) !== segundoDigito) {
+            document.getElementById("resultado").textContent = "Inválido.";
+            return;
+        }
+
+        document.getElementById("resultado").textContent = "Válido.";
+    }
+</script>
+</html>

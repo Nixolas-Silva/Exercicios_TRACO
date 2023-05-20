@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 30</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <section class="base">
+    <h1 class="titulo">Número por Extenso</h1>
+
+    <label class="titulo" for="numero">Digite um número (até dois algarismos):</label>
+    <input class="item" type="number" id="numero">
+
+    <p class="container"><button class="button" onclick="transcreverNumero()">Transcrever</button></p>
+    <br>
+    <h2 class="titulo">Resultado:</h2>
+    <p class="titulo" id="resultado"></p>
+  </section>
+  <footer>
+      <div class="footer__container">
+        <div class="footer">
+          <div class="footer__item">
+            <img src="./img/traco-logo.png" />
+            <p>Para dúvidas e informações</p>
+            <a href="https://traco.dev.br/">traco.dev.br</a>
+          </div>
+          <div class="footer__item">
+            <img src="./img/tegra-logo.png" />
+            <p>Saiba mais sobre a Tegra</p>
+            <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+          </div>
+        </div>
+        <div class="footer__copyright">
+          <p>Todos os direitos reservados a Traco</p>
+          <p>Copyright © 2021</p>
+        </div>
+      </div>
+  </footer>
+</body>
+<script>
+  function transcreverNumero() {
+      var numero = parseInt(document.getElementById("numero").value);
+
+      // Não consegui pensar em outro modo da fazer isso se não a mão...
+      var unidades = ['', 'Um', 'Dois', 'Três', 'Quatro', 'Cinco', 'Seis', 'Sete', 'Oito', 'Nove'];
+      var especiais = ['', 'Onze', 'Doze', 'Treze', 'Quatorze', 'Quinze', 'Dezesseis', 'Dezessete', 'Dezoito', 'Dezenove'];
+      var dezenas = ['', 'Dez', 'Vinte', 'Trinta', 'Quarenta', 'Cinquenta', 'Sessenta', 'Setenta', 'Oitenta', 'Noventa'];
+
+      var extenso = '';
+
+      // Caso o número seja zero
+      if (numero === 0) {
+          extenso = 'Zero';
+      }
+      // Caso o número esteja entre 1 e 9
+      else if (numero >= 1 && numero <= 9) {
+          extenso = unidades[numero];
+      }
+      // Caso o número seja um dos especiais de 11 a 19
+      else if (numero >= 11 && numero <= 19) {
+          extenso = especiais[numero % 10];
+      }
+      // Caso o número seja uma dezena
+      else if (numero % 10 === 0) {
+          extenso = dezenas[numero / 10];
+      }
+      // Caso o número seja uma dezena seguida de uma unidade
+      else {
+          extenso = dezenas[Math.floor(numero / 10)] + ' e ' + unidades[numero % 10];
+      }
+
+      document.getElementById("resultado").textContent = extenso + '.';
+  }
+</script>
+</html>

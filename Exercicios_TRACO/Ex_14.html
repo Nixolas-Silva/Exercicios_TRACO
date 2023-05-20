@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Calculadora de Troco Otimizada</h1>
+      
+      <label class="titulo" for="precoUnitario">Preço unitário do produto:</label>
+      <input class="item" type="number" id="precoUnitario" step="0.01">
+      
+      <label class="titulo" for="quantidade">Quantidade comprada:</label>
+      <input class="item" type="number" id="quantidade">
+      
+      <label class="titulo" for="dinheiroRecebido">Dinheiro recebido:</label>
+      <input class="item" type="number" id="dinheiroRecebido" step="0.01">
+      
+      <p class="container"><button class="button" onclick="calcularTroco()">Calcular</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      
+      <p class="titulo"><span class="item" id="troco"></span></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularTroco() {
+      // Ler o preço unitário do produto, a quantidade e o valor em dinheiro
+      var precoUnitario = parseFloat(document.getElementById('precoUnitario').value);
+      var quantidade = parseInt(document.getElementById('quantidade').value);
+      var dinheiroRecebido = parseFloat(document.getElementById('dinheiroRecebido').value);
+      
+      // Calcular o valor total da compra
+      var totalCompra = precoUnitario * quantidade;
+      
+      // Calcular o troco
+      var troco = dinheiroRecebido - totalCompra;
+
+      // Exibir o valor do troco
+      // Caso o valor de dinheiroRecebido seja menor que o valor total da compra ele retorna uma mensagem
+      // Reutilizei todo o exercício 4, só adicionei o valor faltante no final da mensagem de Dinheiro insuficiente
+      if(dinheiroRecebido < totalCompra){
+            document.getElementById('troco').textContent = 'Dinheiro Insuficiente, faltam R$ ' + (totalCompra - dinheiroRecebido)
+        }else{
+            document.getElementById('troco').textContent = 'Troco: R$ ' + troco.toFixed(2);
+        }
+    }
+</script>
+</html>

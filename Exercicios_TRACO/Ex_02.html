@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+        <!-- Decidi usar o type number para quando as informações forem especificamente números -->
+        <!-- Entendi que o step serve para quando eu clicar nas setinha ele aumentar ou diminuir o valor que eu setar nele -->
+        <h1 class="titulo">Calculadora de Retângulo</h1>
+        <label class="titulo" for="base">Base do retângulo:</label>
+        <input class="item" type="number" id="base" step="0.1"><br>
+        
+        <label class="titulo" for="altura">Altura do retângulo:</label>
+        <input class="item" type="number" id="altura" step="0.1"><br>
+        
+        <p class="container"><button class="button" onclick="calcularRetangulo()">Calcular</button></p>
+        <br>
+        <h2 class="titulo">Resultados:</h2>
+        
+        <p class="titulo">Área: <span class="item" id="area"></span></p>
+        <p class="titulo">Perímetro: <span class="item" id="perimetro"></span></p>
+        <p class="titulo">Diagonal: <span class="item" id="diagonal"></span></p>
+    </section>
+    <footer>
+      <div class="footer__container">
+        <div class="footer">
+          <div class="footer__item">
+            <img src="./img/traco-logo.png" />
+            <p>Para dúvidas e informações</p>
+            <a href="https://traco.dev.br/">traco.dev.br</a>
+          </div>
+          <div class="footer__item">
+            <img src="./img/tegra-logo.png" />
+            <p>Saiba mais sobre a Tegra</p>
+            <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+          </div>
+        </div>
+        <div class="footer__copyright">
+          <p>Todos os direitos reservados a Traco</p>
+          <p>Copyright © 2021</p>
+        </div>
+      </div>
+    </footer>
+</body>
+<script>
+    function calcularRetangulo() {
+      // Ler as medidas da base e altura
+      var base = parseFloat(document.getElementById('base').value);
+      var altura = parseFloat(document.getElementById('altura').value);
+      
+      // Calcular a área
+      var area = base * altura;
+      
+      // Calcular o perímetro
+      var perimetro = 2 * (base + altura);
+      
+      // Calcular a diagonal 
+      //(Precisei olhar na internet pois não lembrava como fazer este cálculo)
+      //(O chatGPT me deu esta fórmula pronta, mas entendi que o Math.sqrt retorna a raiz quadrada de um número)
+      var diagonal = Math.sqrt(base * base + altura * altura);
+      
+      // Exibir os resultados com quatro casas decimais
+      document.getElementById('area').textContent = area.toFixed(4);
+      document.getElementById('perimetro').textContent = perimetro.toFixed(4);
+      document.getElementById('diagonal').textContent = diagonal.toFixed(4);
+    }
+</script>
+</html>

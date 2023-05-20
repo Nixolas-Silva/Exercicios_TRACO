@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+        <h1 class="titulo">Calculadora de Pagamento</h1>
+        
+        <label class="titulo" for="nome">Nome:</label>
+        <input class="item" type="text" id="nome">
+        
+        <label class="titulo" for="valorHora">Valor por hora:</label>
+        <input class="item" type="number" id="valorHora" step="0.01">
+        
+        <label class="titulo" for="horasTrabalhadas">Horas trabalhadas:</label>
+        <input class="item" type="number" id="horasTrabalhadas" step="0.01">
+        
+        <p class="container"><button class="button" onclick="calcularPagamento()">Calcular</button></p>
+        <br>
+        <h2 class="titulo">Resultado:</h2>
+        
+        <p class="titulo"><span class="item" id="mensagem"></span></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularPagamento() {
+      // Ler o nome, valor por hora e horas trabalhadas do funcionário
+      var nome = document.getElementById('nome').value;
+      var valorHora = parseFloat(document.getElementById('valorHora').value);
+      var horasTrabalhadas = parseFloat(document.getElementById('horasTrabalhadas').value);
+      
+      // Calcular o pagamento do funcionário
+      var pagamento = valorHora * horasTrabalhadas;
+      
+      // Exibir o valor do pagamento
+      var mensagem = "O pagamento para " + nome + " deve ser " + pagamento.toFixed(2);
+      document.getElementById('mensagem').textContent = mensagem;
+    }
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+        <h1 class="titulo">Calculadora de Raio</h1>
+    
+        <label class="titulo" for="raio">Digite o valor do raio do círculo:</label>
+        <input class="item" type="number" id="raio" step="0.01">
+        
+        <p class="container"><button class="button" onclick="calcularArea()">Calcular</button></p>
+        <br>
+        <h2 class="titulo">Resultado:</h2>
+        
+        <p class="titulo">ÁREA: <span class="item" id="area"></span></p>
+    </section>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularArea() {
+      // Ler o valor do raio
+      var raio = parseFloat(document.getElementById('raio').value);
+      
+      // Calcular a área do círculo
+      // Declarei pi com o valor indicado, mas poderia usar o math.pi ou o número em si para realizar a conta.
+      const Pi = 3.14159
+      var area = Pi * (raio * raio);
+      
+      // Exibir a área com três casas decimais
+      document.getElementById('area').textContent = area.toFixed(3);
+    }
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+    <h1 class="titulo">Cálculo da Nota Final</h1>
+    
+    <label class="titulo" for="notaPrimeiroSemestre">Nota do primeiro semestre:</label>
+    <input class="item" type="text" id="notaPrimeiroSemestre">
+    
+    <label class="titulo" for="notaSegundoSemestre">Nota do segundo semestre:</label>
+    <input class="item" type="text" id="notaSegundoSemestre">
+    
+    <p class="container"><button class="button" onclick="calcularNotaFinal()">Calcular</button></p>
+    <br>
+    <p class="titulo">Nota Final: <span class="item" id="notaFinal"></span></p>
+    <p class="titulo" id="status"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularNotaFinal() {
+      // Obter as notas do primeiro e segundo semestres
+      var notaPrimeiroSemestre = parseFloat(document.getElementById('notaPrimeiroSemestre').value);
+      var notaSegundoSemestre = parseFloat(document.getElementById('notaSegundoSemestre').value);
+
+      // Calcular a nota final
+      // Assim como feito anteriormente, escolhi usar o divisor fixo como 2 pois seria realizado o calculo somente assim
+      var notaFinal = (notaPrimeiroSemestre + notaSegundoSemestre) / 2;
+
+      // Exibir a nota final com uma casa decimal
+      document.getElementById('notaFinal').textContent = notaFinal.toFixed(1);
+
+      // Verificar se o aluno foi aprovado ou reprovado
+      if (notaFinal < 60.0) {
+        document.getElementById('status').textContent = "REPROVADO";
+      } else {
+        document.getElementById('status').textContent = "APROVADO";
+      }
+    }
+</script>
+</html>

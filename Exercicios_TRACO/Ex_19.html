@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 18</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <!-- Na mesma aula que fiz o exercício da temperatura eu fiz um parecido com esse também em C-->
+      <h1 class="titulo">Aumento de Salário</h1>
+    
+      <label class="titulo" for="salario">Digite o salário da pessoa:</label>
+      <input class="item" type="text" id="salario">
+      
+      <p class="container"><button class="button" onclick="calcularAumento()">Calcular</button></p>
+      <br>      
+      <p class="titulo" id="novoSalario"></p>
+      <p class="titulo" id="aumento"></p>
+      <p class="titulo" id="porcentagem"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularAumento() {
+      // Obter o salário atual
+      var salarioAtual = parseFloat(document.getElementById('salario').value);
+
+      // Calcular o novo salário e o aumento
+      var novoSalario, aumento, porcentagem;
+
+      if (salarioAtual <= 999.00) {
+        // Aumento de 20%
+        aumento = salarioAtual * 0.20;
+        novoSalario = salarioAtual + aumento;
+        porcentagem = 20;
+      } else if (salarioAtual >= 1000.00 && salarioAtual <= 2999.00) {
+        // Aumento de 15%
+        aumento = salarioAtual * 0.15;
+        novoSalario = salarioAtual + aumento;
+        porcentagem = 15;
+      } else if (salarioAtual >= 3000.00 && salarioAtual <= 7999.00) {
+        // Aumento de 10%
+        aumento = salarioAtual * 0.10;
+        novoSalario = salarioAtual + aumento;
+        porcentagem = 10;
+      } else {
+        // Aumento de 5%
+        aumento = salarioAtual * 0.05;
+        novoSalario = salarioAtual + aumento;
+        porcentagem = 5;
+      }
+
+      // Exibir os resultados
+      document.getElementById('novoSalario').textContent = "Novo salário: R$ " + novoSalario.toFixed(2);
+      document.getElementById('aumento').textContent = "Aumento de: R$ " + aumento.toFixed(2);
+      document.getElementById('porcentagem').textContent = "Porcentagem: " + porcentagem + "%";
+    }
+</script>
+</html>

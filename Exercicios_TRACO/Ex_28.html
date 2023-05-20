@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 28</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Menor e Maior Valor</h1>
+
+      <label class="titulo" for="valor1">Valor 1:</label>
+      <input class="item" type="number" id="valor1">
+
+      <label class="titulo" for="valor2">Valor 2:</label>
+      <input class="item" type="number" id="valor2">
+
+      <label class="titulo" for="valor3">Valor 3:</label>
+      <input class="item" type="number" id="valor3">
+
+      <label class="titulo" for="valor4">Valor 4:</label>
+      <input class="item" type="number" id="valor4">
+
+      <label class="titulo" for="valor5">Valor 5:</label>
+      <input class="item" type="number" id="valor5"><br><br>
+
+      <p class="container"><button class="button" onclick="encontrarMenorMaior()">Encontrar</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      <p class="titulo"  id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function encontrarMenorMaior() {
+        // Cria um array com os valores inseridos
+        var valores = [];
+        for (var i = 1; i <= 5; i++) {
+            var valor = parseInt(document.getElementById("valor" + i).value);
+            valores.push(valor);
+        }
+        // Aqui foi só usar novamente a função min e max do math. para pegar o maior e menor valor para exibir
+        var menorValor = Math.min(...valores);
+        var maiorValor = Math.max(...valores);
+
+        document.getElementById("resultado").textContent = menorValor + " e " + maiorValor;
+    }
+</script>
+</html>

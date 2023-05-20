@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Cálculo de Raízes da Equação do Segundo Grau</h1>
+      
+      <label class="titulo" for="coeficienteA">Coeficiente a:</label>
+      <input class="item" type="text" id="coeficienteA">
+      
+      <label class="titulo" for="coeficienteB">Coeficiente b:</label>
+      <input class="item" type="text" id="coeficienteB">
+
+      <label class="titulo" for="coeficienteC">Coeficiente c:</label>
+      <input class="item" type="text" id="coeficienteC">
+      
+      <p class="container"><button class="button" onclick="calcularRaizes()">Calcular</button></p>
+      <br>
+      <p class="titulo">X1 = <span class="item" id="raiz1"></span></p>
+      <p class="titulo">X2 = <span class="item" id="raiz2"></span></p>
+      <p class="titulo" id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularRaizes() {
+      // Obter os coeficientes da equação
+      var coeficienteA = parseFloat(document.getElementById('coeficienteA').value);
+      var coeficienteB = parseFloat(document.getElementById('coeficienteB').value);
+      var coeficienteC = parseFloat(document.getElementById('coeficienteC').value);
+
+      // Calcular o discriminante
+      // Essa foi a parte mais complexa de se fazer até o momento, não fazia equações assim a muitos anos
+      // Pelo que entendi sobre equações de segundo grau, ficaria assim no código de: (discriminante = b² - 4ac)
+      var discriminante = coeficienteB * coeficienteB - 4 * coeficienteA * coeficienteC;
+
+      // Verificar se a equação possui raízes reais
+      if (discriminante >= 0) {
+        // Calcular as raízes
+        var raiz1 = (-coeficienteB + Math.sqrt(discriminante)) / (2 * coeficienteA);
+        var raiz2 = (-coeficienteB - Math.sqrt(discriminante)) / (2 * coeficienteA);
+
+        // Exibir as raízes com quatro casas decimais e limpa a msg;
+        document.getElementById('raiz1').textContent = raiz1.toFixed(4);
+        document.getElementById('raiz2').textContent = raiz2.toFixed(4);
+        document.getElementById('resultado').textContent = "";
+      } else {
+        // Exibir mensagem de que a equação não possui raízes reais e limpa os campos da raiz
+        document.getElementById('raiz1').textContent = "";
+        document.getElementById('raiz2').textContent = "";
+        document.getElementById('resultado').textContent = "Esta equação não possui raízes reais";
+      }
+    }
+</script>
+</html>

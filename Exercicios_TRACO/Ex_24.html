@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 24</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Ordenação de Valores</h1>
+
+      <p class="titulo">Digite 5 valores numéricos inteiros:</p>
+      <input class="item" type="number" id="valor1">
+      <input class="item" type="number" id="valor2">
+      <input class="item" type="number" id="valor3">
+      <input class="item" type="number" id="valor4">
+      <input class="item" type="number" id="valor5">
+
+      <p class="container"><button class="button" onclick="ordenarValores()">Ordenar</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      <p class="titulo" id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function ordenarValores() {
+        var valores = [];
+
+        // Loop para ler os valores digitados e adicioná-los ao array
+        for (var i = 1; i <= 5; i++) {
+            var valor = parseInt(document.getElementById("valor" + i).value);
+            valores.push(valor);
+        }
+
+        // Descobri essa função sort() no developer.mozilla
+         valores.sort(function(a, b) {
+            return a - b;
+        });
+
+        // Exibir os valores ordenados
+        var resultado = "Ordenados: ";
+        for (var i = 0; i < valores.length; i++) {
+            resultado += valores[i];
+            if (i !== valores.length - 1) {
+                resultado += ", ";
+            }
+        }
+
+        document.getElementById("resultado").innerHTML = resultado;
+    }
+</script>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 27</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Verificar Palíndromo</h1>
+
+      <label class="titulo" for="entrada">Digite uma palavra ou número:</label>
+      <input class="item" type="text" id="entrada">
+
+      <p class="container"><button class="button" onclick="verificarPalindromo()">Verificar</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      <p class="titulo"  id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function verificarPalindromo() {
+        var entrada = document.getElementById("entrada").value.toLowerCase();
+        var resultado = document.getElementById("resultado");
+
+        // Remover espaços em branco da entrada
+        var entradaSemEspacos = entrada.replace(/\s/g, "");
+
+        // Essa parte veio totalmente do chatGPT
+        // Vi que está separando os caracteres em um array com o split()
+        // Ele inverte o conteúdo do array com o reverse()
+        // E junta tudo denovo em uma string com o join()
+
+        var entradaInvertida = entradaSemEspacos.split("").reverse().join("");
+
+        // Verificar se a entrada é igual à entrada invertida
+        if (entradaSemEspacos === entradaInvertida) {
+            resultado.textContent = "É palíndroma.";
+        } else {
+            resultado.textContent = "Não é palíndroma.";
+        }
+    }
+</script>
+</html>

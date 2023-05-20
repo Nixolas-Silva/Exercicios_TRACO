@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Cálculo de Áreas</h1>
+      
+      <label class="titulo" for="medidaA">Medida A:</label>
+      <input class="item" type="text" id="medidaA">
+      
+      <label class="titulo" for="medidaB">Medida B:</label>
+      <input class="item" type="text" id="medidaB">
+      
+      <label class="titulo" for="medidaC">Medida C:</label>
+      <input class="item" type="text" id="medidaC">
+      
+      <p class="container"><button class="button" onclick="calcularAreas()">Calcular</button></p><br><br>
+      <br>
+      <p class="titulo">Área do quadrado: <span class="item" id="resultadoQuadrado"></span></p>
+      <p class="titulo">Área do triângulo: <span class="item" id="resultadoTriangulo"></span></p>
+      <p class="titulo">Área do trapézio: <span class="item" id="resultadoTrapezio"></span></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularAreas() {
+      // Obter os valores das medidas A, B e C
+      var medidaA = parseFloat(document.getElementById('medidaA').value);
+      var medidaB = parseFloat(document.getElementById('medidaB').value);
+      var medidaC = parseFloat(document.getElementById('medidaC').value);
+
+      // Calcular as áreas
+      var areaQuadrado = medidaA * medidaA;
+      var areaTriangulo = (medidaA * medidaB) / 2;
+      var areaTrapezio = ((medidaA + medidaB) * medidaC) / 2;
+
+      // Exibir os resultados com 4 casas decimais
+      document.getElementById('resultadoQuadrado').textContent = areaQuadrado.toFixed(4);
+      document.getElementById('resultadoTriangulo').textContent = areaTriangulo.toFixed(4);
+      document.getElementById('resultadoTrapezio').textContent = areaTrapezio.toFixed(4);
+    }
+</script>
+</html>

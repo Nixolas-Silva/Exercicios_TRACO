@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+    <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+<body>
+    <section class="base">
+        <h1 class="titulo">Calculadora de Terreno</h1>
+    
+        <label class="titulo" for="largura">Largura do terreno:</label>
+        <input class="item" type="text" id="largura">
+        
+        <label class="titulo" for="comprimento">Comprimento do terreno:</label>
+        <input class="item" type="text" id="comprimento">
+        
+        <label class="titulo" for="valorMetroQuadrado">Valor do metro quadrado:</label>
+        <input class="item" type="text" id="valorMetroQuadrado">
+
+        <p class="container"><button class="button" onclick="calcularTerreno()">Calcular</button></p>
+        <br>
+        <h2 class="titulo">Resultados:</h2>
+        
+        <p class="titulo">Área do terreno: <span class="item"  id="area"></span></p>
+        <p class="titulo">Preço do terreno: <span class="item"  id="preco"></span></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularTerreno() {
+      // Ler as medidas e o valor do metro quadrado
+      // Descobri o parseFloat na internet, entendi que ele verifica o valor e transforma ele em decimal
+      var largura = parseFloat(document.getElementById('largura').value);
+      var comprimento = parseFloat(document.getElementById('comprimento').value);
+      var valorMetroQuadrado = parseFloat(document.getElementById('valorMetroQuadrado').value);
+      
+      // Calcular a área do terreno
+      var area = largura * comprimento;
+      
+      // Calcular o preço do terreno
+      var preco = area * valorMetroQuadrado;
+      
+      // Exibir os resultados com duas casas decimais
+      document.getElementById('area').textContent = area.toFixed(2) + ' m²';
+      document.getElementById('preco').textContent = 'R$ ' + preco.toFixed(2);
+    }
+</script>
+</html>

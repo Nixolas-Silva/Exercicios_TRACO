@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 26</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Contagem de Vogais e Consoantes</h1>
+
+      <label class="titulo" for="palavra">Digite uma palavra:</label>
+      <input class="item" type="text" id="palavra">
+
+      <p class="container"><button class="button" onclick="contarVogaisConsoantes()">Calcular</button></p>
+      <br>
+      <h2 class="titulo">Resultado:</h2>
+      <p class="titulo"  id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function contarVogaisConsoantes() {
+        // Ler os dados passados
+        var palavra = document.getElementById("palavra").value.toLowerCase();
+        var vogais = 0;
+        var consoantes = 0;
+        // Loop para verificar letra por letra da palava usando o charAt() também visto no developer.Mozilla
+        // O chatGPT me entregou o if inteiro
+        // Entendi que primeiro ele esta usando o match() para ver se é vogal com a expressão /[aeiou]/
+        // E que está usando a expressão /[a-z]/i para verificar se é uma consoante.
+        // Sempre que ele encontra uma das duas ele adiciona 1 ao contador para formar a mensagem no final
+        for (var i = 0; i < palavra.length; i++) {
+            var letra = palavra.charAt(i);
+
+            if (letra.match(/[aeiou]/)) {
+                vogais++;
+            } else if (letra.match(/[a-z]/i)) {
+                consoantes++;
+            }
+        }
+
+        document.getElementById("resultado").innerHTML = "Vogais: " + vogais + "<br>Consoantes: " + consoantes;
+    }
+</script>
+</html>

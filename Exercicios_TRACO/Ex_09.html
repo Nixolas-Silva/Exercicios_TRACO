@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Conversor de Duração de Tempo</h1>
+    
+      <label class="titulo" for="duracaoSegundos">Duração em segundos:</label>
+      <input class="item" type="text" id="duracaoSegundos">
+      
+      <p class="container"><button class="button" onclick="converterDuracao()">Converter</button></p>
+      <br>
+      <p class="titulo">Duração formatada: <span class="item" id="duracaoFormatada"></span></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function converterDuracao() {
+      // Obter o valor da duração em segundos
+      var duracaoSegundos = parseInt(document.getElementById('duracaoSegundos').value);
+
+      // Calcular horas, minutos e segundos
+      // O ChatGPT me indicou usar este Math.floor pra fazer essa conta
+      // Etendi que essa função me traz o menor número inteiro dentre o valor dado
+      var horas = Math.floor(duracaoSegundos / 3600);
+      var minutos = Math.floor((duracaoSegundos % 3600) / 60);
+      var segundos = duracaoSegundos % 60;
+
+      // Formatar a duração no formato horas:minutos:segundos
+      var duracaoFormatada = horas + ":" + minutos + ":" + segundos;
+
+      // Exibir a duração formatada
+      document.getElementById('duracaoFormatada').textContent = duracaoFormatada;
+    }
+</script>
+</html>

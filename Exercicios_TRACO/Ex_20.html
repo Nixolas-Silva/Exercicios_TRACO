@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 20</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Soma dos Números no Intervalo</h1>
+    
+      <label class="titulo" for="numeroInicial">Número inicial:</label>
+      <input class="item" type="text" id="numeroInicial">
+      
+      <label class="titulo" for="numeroFinal">Número final:</label>
+      <input class="item" type="text" id="numeroFinal">
+      
+      <p class="container"><button class="button" onclick="calcularSoma()">Calcular</button></p>
+      <br>
+      <p class="titulo" id="resultado"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+     function calcularSoma() {
+      // Obter os números inicial e final
+      var numeroInicial = parseInt(document.getElementById('numeroInicial').value);
+      var numeroFinal = parseInt(document.getElementById('numeroFinal').value);
+
+      // Calcular a soma
+      var soma = 0;
+      // Aqui tem um loop para ir pegando os valores entre o primeiro e o ultimo numero e ir adicionando no valor final
+      for (var i = numeroInicial; i <= numeroFinal; i++) {
+        soma += i;
+      }
+
+      // Exibir o resultado
+      document.getElementById('resultado').textContent = "Resultado: " + soma;
+    }   
+</script>
+</html>

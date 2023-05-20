@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+      <h1 class="titulo">Cálculo do Valor do Plano de Telefonia</h1>
+    
+      <label class="titulo" for="quantidadeMinutos">Quantidade de minutos:</label>
+      <input class="item" type="text" id="quantidadeMinutos">
+      
+      <p class="container"><button class="button" onclick="calcularValorPlano()">Calcular</button></p>
+      <br>
+      <p class="titulo" id="valorPagar"></p>
+      <p class="titulo" id="minutos"></p>
+    </section>
+    <footer>
+        <div class="footer__container">
+          <div class="footer">
+            <div class="footer__item">
+              <img src="./img/traco-logo.png" />
+              <p>Para dúvidas e informações</p>
+              <a href="https://traco.dev.br/">traco.dev.br</a>
+            </div>
+            <div class="footer__item">
+              <img src="./img/tegra-logo.png" />
+              <p>Saiba mais sobre a Tegra</p>
+              <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+            </div>
+          </div>
+          <div class="footer__copyright">
+            <p>Todos os direitos reservados a Traco</p>
+            <p>Copyright © 2021</p>
+          </div>
+        </div>
+      </footer>
+</body>
+<script>
+    function calcularValorPlano() {
+      // Obter a quantidade de minutos consumidos
+      var quantidadeMinutos = parseInt(document.getElementById('quantidadeMinutos').value);
+
+      // Definir o valor do plano básico e a franquia de minutos
+      const valorPlanoBasico = 50.0;
+      const franquiaMinutos = 100;
+
+      // Verificar se a quantidade de minutos excede a franquia
+      if (quantidadeMinutos > franquiaMinutos) {
+        // Calcular o valor excedente
+        var minutosExcedentes = quantidadeMinutos - franquiaMinutos;
+        var valorExcedente = minutosExcedentes * 2.0;
+
+        // Calcular o valor total a ser pago
+        var valorTotal = valorPlanoBasico + valorExcedente;
+
+        // Exibir o valor a ser pago
+        document.getElementById('valorPagar').textContent = "Valor a pagar: R$ " + valorTotal.toFixed(2);
+        document.getElementById('minutos').textContent = "Voce excedeu " + minutosExcedentes + " minutos do plano básico";
+      } else {
+        // Caso a quantidade de minutos não exceda a franquia, o valor a ser pago é o valor do plano básico
+        document.getElementById('valorPagar').textContent = "Valor a pagar: R$ " + valorPlanoBasico.toFixed(2);
+      }
+    }
+</script>
+</html>

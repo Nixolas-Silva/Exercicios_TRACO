@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3</title>
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <section class="base">
+        <h1 class="titulo">Calculadora de Média de Idade</h1>
+        
+        <label class="titulo" for="nome1">Nome 1:</label>
+        <input class="item" type="text" id="nome1">
+        
+        <label class="titulo" for="idade1">Idade 1:</label>
+        <input class="item" type="number" id="idade1">
+        
+        <label class="titulo" for="nome2">Nome 2:</label>
+        <input class="item" type="text" id="nome2">
+        
+        <label class="titulo" for="idade2">Idade 2:</label>
+        <input class="item" type="number" id="idade2">
+        
+        <p class="container"><button class="button" onclick="calcularIdadeMedia()">Calcular</button></p>
+        <br>
+        <h2 class="titulo">Resultado:</h2>
+        
+        <p class="titulo"><span class="item" id="mensagem"></span></p>
+    </section>
+    <footer>
+      <div class="footer__container">
+        <div class="footer">
+          <div class="footer__item">
+            <img src="./img/traco-logo.png" />
+            <p>Para dúvidas e informações</p>
+            <a href="https://traco.dev.br/">traco.dev.br</a>
+          </div>
+          <div class="footer__item">
+            <img src="./img/tegra-logo.png" />
+            <p>Saiba mais sobre a Tegra</p>
+            <a href="https://www.tegra.com.br">www.tegra.com.br</a>
+          </div>
+        </div>
+        <div class="footer__copyright">
+          <p>Todos os direitos reservados a Traco</p>
+          <p>Copyright © 2021</p>
+        </div>
+      </div>
+    </footer>
+</body>
+<script>
+    function calcularIdadeMedia() {
+      // Ler os nomes e idades das duas pessoas
+      var nome1 = document.getElementById('nome1').value;
+      var idade1 = parseFloat(document.getElementById('idade1').value);
+      var nome2 = document.getElementById('nome2').value;
+      var idade2 = parseFloat(document.getElementById('idade2').value);
+      
+      // Calcular a idade média
+      //Como são somente duas idades deixei o divisor fixo em 2
+      var idadeMedia = (idade1 + idade2) / 2;
+      
+      // Exibir a mensagem com a média de idade 
+      var mensagem = "A média de idade  entre " + nome1 + " e " + nome2 + " é de " + idadeMedia.toFixed(1) + " anos.";
+      document.getElementById('mensagem').textContent = mensagem;
+    }
+</script>
+</html>
